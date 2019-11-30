@@ -1,0 +1,8 @@
+c19/config/__pycache__/
+c19/config/settings/__pycache__/
+c19/config/settings/secrets.json
+docs/_build/
+docs/_static/
+docs/_templates/
+docs/make.bat
+docs/Makefile

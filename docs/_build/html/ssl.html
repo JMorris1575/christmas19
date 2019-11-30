@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting SSL Updated on the Christmas 2018 Website &#8212; Christmas 2019 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Planning for the Christmas 2019 Website" href="planning.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-ssl-updated-on-the-christmas-2018-website">
+<h1>Getting SSL Updated on the Christmas 2018 Website<a class="headerlink" href="#getting-ssl-updated-on-the-christmas-2018-website" title="Permalink to this headline">¶</a></h1>
+<p>Earlier today I tried, unsuccessfully, to update my LetsEncrypt certificate using a button on webfaction. I think I will
+have to follow the instructions in the <strong>Instructions</strong> project.</p>
+<div class="section" id="renewing-the-certificate-in-ssh">
+<h2>Renewing the Certificate in ssh<a class="headerlink" href="#renewing-the-certificate-in-ssh" title="Permalink to this headline">¶</a></h2>
+<p>I got into ssh <a class="reference external" href="mailto:jmorris&#37;&#52;&#48;web506&#46;webfaction&#46;com">jmorris<span>&#64;</span>web506<span>&#46;</span>webfaction<span>&#46;</span>com</a> (noticing that <strong>Instructions</strong> incorrectly said
+jmorris.web506.webfaction.com) and entered the command:</p>
+<p>~$: acme.sh –issue –test -d christmas.jmorris.webfactional.com -d www.christm
+as.jmorris.webfactional.com -w ~/webapps/my_sll_app</p>
+<p>And got this response:</p>
+<p>[Sat Nov 30 00:10:30 UTC 2019] Using stage ACME_DIRECTORY: <a class="reference external" href="https://acme-staging.api.letsencrypt.org/directory">https://acme-staging.api.letsencrypt.org/directory</a>
+[Sat Nov 30 00:10:31 UTC 2019] Domains not changed.
+[Sat Nov 30 00:10:31 UTC 2019] Skip, Next renewal time is: Sun Dec  1 00:34:12 UTC 2019
+[Sat Nov 30 00:10:31 UTC 2019] Add ‘–force’ to force to renew.</p>
+<p>That seemed o.k. to me so I proceeded to do it for real:</p>
+<p>~$: acme.sh –issue -d christmas.jmorris.webfactional.com -d www.christmas.jmor
+ris.webfactional.com -w ~/webapps/my_sll_app</p>
+<p>[Sat Nov 30 00:11:32 UTC 2019] Domains not changed.
+[Sat Nov 30 00:11:32 UTC 2019] Skip, Next renewal time is: Sun Dec  1 00:34:12 UTC 2019
+[Sat Nov 30 00:11:32 UTC 2019] Add ‘–force’ to force to renew.</p>
+<p>Nothing much seemed to happen so I tried the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option:</p>
+<p>~$: acme.sh –issue –force -d christmas.jmorris.webfactional.com -d www.christ
+mas.jmorris.webfactional.com -w ~/webapps/my_sll_app</p>
+<p>[Sat Nov 30 00:12:24 UTC 2019] Multi domain=’<a class="reference external" href="DNS:christmas.jmorris.webfactional.com,DNS:www.christmas.jmorris.webfactional.com">DNS:christmas.jmorris.webfactional.com,DNS:www.christmas.jmorris.webfactional.com</a>’
+[Sat Nov 30 00:12:25 UTC 2019] Getting domain auth token for each domain
+[Sat Nov 30 00:12:25 UTC 2019] Getting webroot for domain=’christmas.jmorris.webfactional.com’
+[Sat Nov 30 00:12:25 UTC 2019] Getting new-authz for domain=’christmas.jmorris.webfactional.com’
+[Sat Nov 30 00:12:25 UTC 2019] The new-authz request is ok.
+[Sat Nov 30 00:12:26 UTC 2019] Getting webroot for domain=’www.christmas.jmorris.webfactional.com’
+[Sat Nov 30 00:12:26 UTC 2019] Getting new-authz for domain=’www.christmas.jmorris.webfactional.com’
+[Sat Nov 30 00:12:26 UTC 2019] The new-authz request is ok.
+[Sat Nov 30 00:12:26 UTC 2019] Verifying:christmas.jmorris.webfactional.com
+mkdir: cannot create directory ‘/home/jmorris/webapps/my_sll_app’: Permission denied
+/home/jmorris/.acme.sh/acme.sh: line 3951: /home/jmorris/webapps/my_sll_app/.well-known/acme-challenge/D3wAVtAk3jLQvYXYy08ZfPNs4JrzGB6uhjjcboAHJkw: No such file or directory
+[Sat Nov 30 00:12:26 UTC 2019] christmas.jmorris.webfactional.com:Can not write token to file : /home/jmorris/webapps/my_sll_app/.well-known/acme-challenge/D3wAVtAk3jLQvYXYy08ZfPNs4JrzGB6uhjjcboAHJkw
+[Sat Nov 30 00:12:26 UTC 2019] Please add ‘–debug’ or ‘–log’ to check more details.
+[Sat Nov 30 00:12:26 UTC 2019] See: https://github.com/Neilpang/acme.sh/wiki/How-to-debug-acme.sh
+~$:</p>
+<p>That seemed to work but…</p>
+</div>
+<div class="section" id="copying-the-files-to-webfaction">
+<h2>Copying the Files to Webfaction<a class="headerlink" href="#copying-the-files-to-webfaction" title="Permalink to this headline">¶</a></h2>
+<p>I got into FileZilla to find the new files on webfaction in <code class="docutils literal notranslate"><span class="pre">/home/jmorris/.acme.sh/christmas.jmorris.webfactional.com</span></code>
+and discovered three new files:</p>
+<p>christmas.jmorris.webfactional.com.conf
+christmas.jmorris.webfactional.com.csr
+christmas.jmorris.webfactional.com.csr.conf</p>
+<p>I copied them over to Notepad++ but they were not the right ones. The directions said to copy</p>
+<ul class="simple">
+<li><p>~/.acme.sh/mysite.com.cer to the <strong>Certificate</strong> section</p></li>
+<li><p>~/.acme.sh/mysite.com.key to the <strong>Private key</strong> section and</p></li>
+<li><p>~/.acme.sh/ca.cer to the <strong>Intermediates/bundle</strong> section</p></li>
+</ul>
+<p>Hmm… none of those were in the new files. Also, the ca.cer file was in the
+<code class="docutils literal notranslate"><span class="pre">~/.acme.sh/christmas.jmorris.webfactional.com</span></code> directory and NOT in the <code class="docutils literal notranslate"><span class="pre">~/.acme.sh/</span></code> directory.</p>
+<p>However, the <code class="docutils literal notranslate"><span class="pre">ca.cer</span></code> and <code class="docutils literal notranslate"><span class="pre">christmas.jmorris.webfactional.com.cer</span></code> files had been updated on 10/1/2019 and the
+<code class="docutils literal notranslate"><span class="pre">christmas.jmorris.webfactional.com.key</span></code> file was still the 12/5/2018 copy. I copied them to the appropriate sections
+of Webfaction’s SSL editing page and the site is now working properly as an encrypted site!</p>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>It seems that the cron job that renews the certificate periodically IS working but that it doesn’t copy the new
+information to the proper places. Either I have to do that myself or figure out how to automate it.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Christmas 2019</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="planning.html">Planning for the Christmas 2019 Website</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting SSL Updated on the Christmas 2018 Website</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#renewing-the-certificate-in-ssh">Renewing the Certificate in ssh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copying-the-files-to-webfaction">Copying the Files to Webfaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusions">Conclusions</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="planning.html" title="previous chapter">Planning for the Christmas 2019 Website</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Jim Morris.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/ssl.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

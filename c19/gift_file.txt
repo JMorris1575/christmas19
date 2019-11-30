@@ -1,0 +1,70 @@
+Gift 1: Selected by: Dave
+
+Gift 2: Selected by: Evan
+
+Gift 3: Selected by: Janet
+
+Gift 4: Selected by: Chau
+
+Gift 5: Selected by: Charlie
+
+Gift 6: Selected by: Katelyn
+
+Gift 7: Unselected
+
+Gift 8: Selected by: Bill
+
+Gift 9: Selected by: Brian Morris
+
+Gift 10: Selected by: Scott
+
+Gift 11: Unselected
+
+Gift 12: Selected by: Abby
+
+Gift 13: Selected by: Nancy
+
+Gift 14: Selected by: Bob
+
+Gift 15: Selected by: Harry
+
+Gift 16: Selected by: Ben
+
+Gift 17: Selected by: Madeline
+
+Gift 18: Selected by: Joyce
+
+Gift 19: Unselected
+
+Gift 20: Selected by: Kevin
+
+Gift 21: Selected by: Craig
+
+Gift 22: Unselected
+
+Gift 23: Unselected
+
+Gift 24: Selected by: Anne
+
+Gift 25: Selected by: Nolan
+
+Gift 26: Selected by: Marisa
+
+Gift 27: Unselected
+
+Gift 28: Unselected
+
+Gift 29: Selected by: Matt
+
+Gift 30: Selected by: Brian Ruby
+
+Gift 31: Unselected
+
+Gift 32: Unselected
+
+Gift 33: Unselected
+
+Gift 34: Selected by: Tom
+
+Gift 35: Selected by: Evelyn
+
