@@ -14,7 +14,6 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Planning for the Christmas 2019 Website" href="planning.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -39,37 +38,46 @@ have to follow the instructions in the <strong>Instructions</strong> project.</p
 <h2>Renewing the Certificate in ssh<a class="headerlink" href="#renewing-the-certificate-in-ssh" title="Permalink to this headline">¶</a></h2>
 <p>I got into ssh <a class="reference external" href="mailto:jmorris&#37;&#52;&#48;web506&#46;webfaction&#46;com">jmorris<span>&#64;</span>web506<span>&#46;</span>webfaction<span>&#46;</span>com</a> (noticing that <strong>Instructions</strong> incorrectly said
 jmorris.web506.webfaction.com) and entered the command:</p>
-<p>~$: acme.sh –issue –test -d christmas.jmorris.webfactional.com -d www.christm
-as.jmorris.webfactional.com -w ~/webapps/my_sll_app</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~$: acme.sh --issue --test -d christmas.jmorris.webfactional.com -d www.christm
+as.jmorris.webfactional.com -w ~/webapps/my_sll_app
+</pre></div>
+</div>
 <p>And got this response:</p>
-<p>[Sat Nov 30 00:10:30 UTC 2019] Using stage ACME_DIRECTORY: <a class="reference external" href="https://acme-staging.api.letsencrypt.org/directory">https://acme-staging.api.letsencrypt.org/directory</a>
-[Sat Nov 30 00:10:31 UTC 2019] Domains not changed.
-[Sat Nov 30 00:10:31 UTC 2019] Skip, Next renewal time is: Sun Dec  1 00:34:12 UTC 2019
-[Sat Nov 30 00:10:31 UTC 2019] Add ‘–force’ to force to renew.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Sat</span> <span class="n">Nov</span> <span class="mi">30</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">30</span> <span class="n">UTC</span> <span class="mi">2019</span><span class="p">]</span> <span class="n">Using</span> <span class="n">stage</span> <span class="n">ACME_DIRECTORY</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">acme</span><span class="o">-</span><span class="n">staging</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">letsencrypt</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">directory</span>
+<span class="p">[</span><span class="n">Sat</span> <span class="n">Nov</span> <span class="mi">30</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">31</span> <span class="n">UTC</span> <span class="mi">2019</span><span class="p">]</span> <span class="n">Domains</span> <span class="ow">not</span> <span class="n">changed</span><span class="o">.</span>
+<span class="p">[</span><span class="n">Sat</span> <span class="n">Nov</span> <span class="mi">30</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">31</span> <span class="n">UTC</span> <span class="mi">2019</span><span class="p">]</span> <span class="n">Skip</span><span class="p">,</span> <span class="n">Next</span> <span class="n">renewal</span> <span class="n">time</span> <span class="ow">is</span><span class="p">:</span> <span class="n">Sun</span> <span class="n">Dec</span>  <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">12</span> <span class="n">UTC</span> <span class="mi">2019</span>
+<span class="p">[</span><span class="n">Sat</span> <span class="n">Nov</span> <span class="mi">30</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">31</span> <span class="n">UTC</span> <span class="mi">2019</span><span class="p">]</span> <span class="n">Add</span> <span class="s1">&#39;--force&#39;</span> <span class="n">to</span> <span class="n">force</span> <span class="n">to</span> <span class="n">renew</span><span class="o">.</span>
+</pre></div>
+</div>
 <p>That seemed o.k. to me so I proceeded to do it for real:</p>
-<p>~$: acme.sh –issue -d christmas.jmorris.webfactional.com -d www.christmas.jmor
-ris.webfactional.com -w ~/webapps/my_sll_app</p>
-<p>[Sat Nov 30 00:11:32 UTC 2019] Domains not changed.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~$: acme.sh --issue -d christmas.jmorris.webfactional.com -d www.christmas.jmor
+ris.webfactional.com -w ~/webapps/my_sll_app
+
+[Sat Nov 30 00:11:32 UTC 2019] Domains not changed.
 [Sat Nov 30 00:11:32 UTC 2019] Skip, Next renewal time is: Sun Dec  1 00:34:12 UTC 2019
-[Sat Nov 30 00:11:32 UTC 2019] Add ‘–force’ to force to renew.</p>
+[Sat Nov 30 00:11:32 UTC 2019] Add &#39;--force&#39; to force to renew.
+</pre></div>
+</div>
 <p>Nothing much seemed to happen so I tried the <code class="docutils literal notranslate"><span class="pre">--force</span></code> option:</p>
-<p>~$: acme.sh –issue –force -d christmas.jmorris.webfactional.com -d www.christ
-mas.jmorris.webfactional.com -w ~/webapps/my_sll_app</p>
-<p>[Sat Nov 30 00:12:24 UTC 2019] Multi domain=’<a class="reference external" href="DNS:christmas.jmorris.webfactional.com,DNS:www.christmas.jmorris.webfactional.com">DNS:christmas.jmorris.webfactional.com,DNS:www.christmas.jmorris.webfactional.com</a>’
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>~$: acme.sh --issue --force -d christmas.jmorris.webfactional.com -d www.christ
+mas.jmorris.webfactional.com -w ~/webapps/my_sll_app
+
+[Sat Nov 30 00:12:24 UTC 2019] Multi domain=&#39;DNS:christmas.jmorris.webfactional.com,DNS:www.christmas.jmorris.webfactional.com&#39;
 [Sat Nov 30 00:12:25 UTC 2019] Getting domain auth token for each domain
-[Sat Nov 30 00:12:25 UTC 2019] Getting webroot for domain=’christmas.jmorris.webfactional.com’
-[Sat Nov 30 00:12:25 UTC 2019] Getting new-authz for domain=’christmas.jmorris.webfactional.com’
+[Sat Nov 30 00:12:25 UTC 2019] Getting webroot for domain=&#39;christmas.jmorris.webfactional.com&#39;
+[Sat Nov 30 00:12:25 UTC 2019] Getting new-authz for domain=&#39;christmas.jmorris.webfactional.com&#39;
 [Sat Nov 30 00:12:25 UTC 2019] The new-authz request is ok.
-[Sat Nov 30 00:12:26 UTC 2019] Getting webroot for domain=’www.christmas.jmorris.webfactional.com’
-[Sat Nov 30 00:12:26 UTC 2019] Getting new-authz for domain=’www.christmas.jmorris.webfactional.com’
+[Sat Nov 30 00:12:26 UTC 2019] Getting webroot for domain=&#39;www.christmas.jmorris.webfactional.com&#39;
+[Sat Nov 30 00:12:26 UTC 2019] Getting new-authz for domain=&#39;www.christmas.jmorris.webfactional.com&#39;
 [Sat Nov 30 00:12:26 UTC 2019] The new-authz request is ok.
 [Sat Nov 30 00:12:26 UTC 2019] Verifying:christmas.jmorris.webfactional.com
 mkdir: cannot create directory ‘/home/jmorris/webapps/my_sll_app’: Permission denied
 /home/jmorris/.acme.sh/acme.sh: line 3951: /home/jmorris/webapps/my_sll_app/.well-known/acme-challenge/D3wAVtAk3jLQvYXYy08ZfPNs4JrzGB6uhjjcboAHJkw: No such file or directory
 [Sat Nov 30 00:12:26 UTC 2019] christmas.jmorris.webfactional.com:Can not write token to file : /home/jmorris/webapps/my_sll_app/.well-known/acme-challenge/D3wAVtAk3jLQvYXYy08ZfPNs4JrzGB6uhjjcboAHJkw
-[Sat Nov 30 00:12:26 UTC 2019] Please add ‘–debug’ or ‘–log’ to check more details.
+[Sat Nov 30 00:12:26 UTC 2019] Please add &#39;--debug&#39; or &#39;--log&#39; to check more details.
 [Sat Nov 30 00:12:26 UTC 2019] See: https://github.com/Neilpang/acme.sh/wiki/How-to-debug-acme.sh
-~$:</p>
+</pre></div>
+</div>
 <p>That seemed to work but…</p>
 </div>
 <div class="section" id="copying-the-files-to-webfaction">
@@ -115,22 +123,11 @@ information to the proper places. Either I have to do that myself or figure out 
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="planning.html">Planning for the Christmas 2019 Website</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting SSL Updated on the Christmas 2018 Website</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#renewing-the-certificate-in-ssh">Renewing the Certificate in ssh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#copying-the-files-to-webfaction">Copying the Files to Webfaction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#conclusions">Conclusions</a></li>
-</ul>
-</li>
-</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="planning.html" title="previous chapter">Planning for the Christmas 2019 Website</a></li>
   </ul></li>
 </ul>
 </div>

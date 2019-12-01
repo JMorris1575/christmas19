@@ -12,6 +12,8 @@ Welcome to Christmas 2019's documentation!
 
    planning.rst
    ssl.rst
+   local.rst
+   updating.rst
 
 
 

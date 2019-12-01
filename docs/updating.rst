@@ -38,3 +38,33 @@ Updating the Images
 
 Another thing I need to update is the new images and then do another l * o * n * g push to github. I should be able to
 copy/paste the images from this computer (my home computer) to the PyCharm's project directory and then do another push.
+
+Problems Saving the Images
+++++++++++++++++++++++++++
+
+I created some problems for myself in the process. First, I did the push with last year's gift images. Since it was
+taking a long time, and since I had to leave Kalamazoo soon, I cancelled the push part way through and then copied this
+year's gift images and did the push again.
+
+It didn't take. Github had many of the old images still. I guess that Git goes by the filename and location rather than
+the contents of .png files. Also, some of the image files were labeled ``gift #.png`` instead of ``Gift #.png``.
+
+After some thrashing around trying to rename files in the project directory and pushing them again and other failed
+attempts, I finally deleted all the gift image files from the project directory, did a commit and then a push of the
+project without gift images, then reloaded the renamed images from the Pictures folder in Kalamazoo, did a commit and
+then a push of the reconstituted project and it worked!
+
+Cloning the Project to the Rectory Computer
+-------------------------------------------
+
+Following the directions in **Instructions**, I was able to clone the project here to my rectory computer. It was not
+assigned to any virtual environment. When I got into Settings/Project Interpreter, I was able to find the christmas19
+environment and attached to that. PyCharm now opens the project in the christmas19 environment.
+
+I pip installed sphinx, django and psycopg2 without incident and used TeamViewer to transfer secrets.json to this
+computer.
+
+Running the server (``python manage.py runserver``) and checking the local website confirmed that everything is working
+as expected -- although, for some reason, all of the gifts are marked as wrapped in spite of also being marked as having
+been selected.
+
