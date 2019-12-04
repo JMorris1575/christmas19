@@ -68,3 +68,26 @@ Running the server (``python manage.py runserver``) and checking the local websi
 as expected -- although, for some reason, all of the gifts are marked as wrapped in spite of also being marked as having
 been selected.
 
+Creating the 2019 Development Database
+--------------------------------------
+
+As explained in **Instructions**, I got into pgAdmin4 and created a database I called c19. I had to do a
+``python manage.py migrate`` before it would work, and then I copied the users from 2018 to this year's database
+with ``python manage.py dumpdata auth.user > c18Users.json`` and copied c18Users.json to the Christmas 2019 project.
+
+I allowed it to put it into Git but then had second thoughts since everybody's email addresses are in there in plain
+text. After doing the ``python manage.py loaddata c18Users.json`` I moved the json file to One Drive to be used again.
+
+But now I have second thoughts about that. I've already added Joey to the user list so I should just create a new json
+file with him in it to do the transfer.
+
+Anyway, it all seems to be working.
+
+Updating the Content
+--------------------
+
+The gift list went in today (2019-12-02) without much problem. For a while I had two Gift 1s because I mistyped 13, but
+I was able to clear that up easily enough.
+
+
+
