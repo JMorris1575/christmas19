@@ -89,5 +89,61 @@ Updating the Content
 The gift list went in today (2019-12-02) without much problem. For a while I had two Gift 1s because I mistyped 13, but
 I was able to clear that up easily enough.
 
+Moving Back to the Home Computer
+--------------------------------
+
+I had accidentally started my Christmas2019 project in the ``Documents/PyCharmProjects`` directory instead of the
+``Documents/MyDjangoProjects`` directory. I copied it from the former to the latter, started it up, and it seems to be
+working fine. I did a Git->Pull and updated the program -- mostly this file I think. Now I will create a c19 database
+on this computer and populate it with the data in ``2019-12-03-user-gift.json`` To get these two computers to match.
+
+I completed the above and now all 36 new gifts are showing.
+
+But - Oops! - I did the loaddata into the c18 version of the database. I hadn't copied over the new secrets.json file
+before running the server. My previous version of c18 is gone. I'll have to get its data from the website through ssh,
+but for now I'll just re-load the data into the proper database. (Note: I had to do a ``python manage.py migrate``
+again.)
+
+Updating PgAdmin4
+-----------------
+
+There was an update available and I installed it. It now requires a password which seemes to be Dylan Selfie. (Although
+that could have been set by me tonight.)
+
+Copying Last-year's Online Database
+-----------------------------------
+
+It took some doing, since ``python3.7 manage.py dumpdata gift ... > 2018-database.json`` didn't seem to capture the
+Comment model in the gift app. I finally ended up getting into admin to delete all of the data from every model and
+then load it all again by doing ``python3.7 dumpdata > 2018-all.json`` through an ssh connection followed by a
+``python loaddata 2018-all.json`` on the local computer.
+
+Updating Whatsit
+----------------
+
+This was easy to do, just enter each of the five objects and the correct description for each one.
+
+Updating Trivia
+---------------
+
+This will be easy once I come up with enough questions for the first set.
+
+Updating Recipe
+---------------
+
+This will be hardest, I think, but only in coming up with which recipes to do. I'd also like to add an image of Aunt
+Helen to it someplace, and possibly of Mom if I end up using some of her recipes too.
+
+Reinstalling Memories
+---------------------
+
+I noticed that no memories were in my c19 database. I will have to copy them from Christmas 2018.
+
+
+
+
+
+
+
 
 
